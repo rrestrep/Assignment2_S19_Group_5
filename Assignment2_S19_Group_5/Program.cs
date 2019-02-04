@@ -16,15 +16,16 @@ namespace Assignment2_S19_Group_5
 
         {
 
-            // left rotation
+        // EXERCISE # 1: Left rotation
 
-            //Excersice #1: A left rotation operation on an array shifts each of the array's elements 1 unit to the left
-            //Request for an User inptu as the number of times he wants to rotate the array left
-            Console.Write("Please the number of times you want to LEFT rotate an array defined as [1 2 3 4 5]: ");
+            Console.WriteLine("Left Rotation");
+            // A left rotation operation on an array shifts each of the array's elements 1 unit to the left
+            // Request for a user input for the number of times he wants to rotate the array left
+            Console.Write("\nPlease key the number of times you want to LEFT rotate an array defined as [1 2 3 4 5]: ");
             string input = Console.ReadLine();
             int d = int.Parse(input);
 
-            //Set an Static Array to test
+            // Set an Static Array to test
             int[] a = { 1, 2, 3, 4, 5 };
 
             // Left Shift Array Method called
@@ -32,17 +33,19 @@ namespace Assignment2_S19_Group_5
             Console.WriteLine(String.Join(",", a));
             Console.ReadKey(true);
 
+        // EXERCISE 2: Maximum toys
 
-
-            // Maximum toys
             Console.WriteLine("\n\nMaximum toys");
+            // Initialize k value
             int k = 50;
+            // Write prices array
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-            Console.WriteLine(maximumToys(prices, k));
+            // Call maximumToys method
+            maximumToys(prices, k);
+            Console.ReadKey(true);
 
 
-
-            // Balanced sums
+        // EXERCISE 3: Balanced sums
 
             Console.WriteLine("\n\nBalanced sums");
 
@@ -137,10 +140,7 @@ namespace Assignment2_S19_Group_5
             Array.Copy(arr, buffer, shift);
             Array.Copy(arr, shift, arr, 0, arr.Length - shift);
             Array.Copy(buffer, 0, arr, arr.Length - shift, shift);
-
         }
-
-
 
         // Complete the maximumToys function below.
 
@@ -153,7 +153,7 @@ namespace Assignment2_S19_Group_5
                 int numToys = 0, totPrice = 0;
 
                 // Ask user for their desired budget
-                Console.WriteLine("What is your desired budget? ");
+                Console.Write("What is your desired budget? ");
                 // Take user's input and save to variable k
                 string input = Console.ReadLine();
                 k = int.Parse(input);
