@@ -76,7 +76,9 @@ namespace Assignment2_S19_Group_5
         // EXERCISE 6: find the median
 
             Console.WriteLine("\n\nFind the median");
+            // Create arr2 
             int[] arr2 = { 0, 1, 2, 4, 6, 5, 3 };
+            // Call method findMedian
             findMedian(arr2);
             Console.ReadKey(true);
 
