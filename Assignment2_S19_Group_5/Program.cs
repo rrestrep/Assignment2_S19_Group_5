@@ -1,19 +1,14 @@
 ﻿using System;
-
 using System.Collections.Generic;
-
+// Authors: Carmelo Anthony, Rafael Restrepo, Mithra Sagar
+// Course: ISM 6225 University of South Florida
 
 
 namespace Assignment2_S19_Group_5
-
 {
-
     class Program
-
     {
-
         static void Main(string[] args)
-
         {
 
         // EXERCISE # 1: Left rotation
@@ -44,14 +39,12 @@ namespace Assignment2_S19_Group_5
             maximumToys(prices, k);
             Console.ReadKey(true);
 
-
         // EXERCISE 3: Balanced sums
 
             Console.WriteLine("\n\nBalanced sums");
             List<int> arr = new List<int> { 1, 2, 3 };
             Console.WriteLine(balancedSums(arr));
             Console.ReadKey(true);
-
 
         // EXERCISE 4: Missing numbers
 
@@ -63,7 +56,6 @@ namespace Assignment2_S19_Group_5
             displayArray(r2);
             Console.ReadKey(true);
 
-
         // EXERCISE 5: grading students
 
             Console.WriteLine("\n\nGrading students");
@@ -71,7 +63,6 @@ namespace Assignment2_S19_Group_5
             int[] r3 = gradingStudents(grades);
             displayArray(r3);
             Console.ReadKey(true);
-
 
         // EXERCISE 6: find the median
 
@@ -90,8 +81,8 @@ namespace Assignment2_S19_Group_5
             displayArray(r4);
             Console.ReadKey(true);
 
-
         // EXERCISE 8: Day of programmer
+
             Console.WriteLine("\n\nDay of Programmer");
             int year = 2017;
             Console.WriteLine(dayOfProgrammer(year));
