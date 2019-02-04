@@ -35,13 +35,9 @@ namespace Assignment2_S19_Group_5
 
 
             // Maximum toys
-
             Console.WriteLine("\n\nMaximum toys");
-
             int k = 50;
-
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-
             Console.WriteLine(maximumToys(prices, k));
 
 
@@ -149,11 +145,77 @@ namespace Assignment2_S19_Group_5
         // Complete the maximumToys function below.
 
         static int maximumToys(int[] prices, int k)
-
         {
+            try
+            {
+                // Establish variables that will be used in calculating
+                int min_position, temp;
+                int numToys = 0, totPrice = 0;
 
+                // Ask user for their desired budget
+                Console.WriteLine("What is your desired budget? ");
+                // Take user's input and save to variable k
+                string input = Console.ReadLine();
+                k = int.Parse(input);
+
+                Console.WriteLine("\nBelow are the sorted prices:");
+                // Perform selection sort to go through array and place in ascending order
+                for (int i = 0; i < prices.Length; i++)
+                {
+                    // Sets min_position to keep track of element with lowest value
+                    min_position = i;
+                    // Begins to cycle through array
+                    for (int x = i + 1; x < prices.Length; x++)
+                    {
+                        // If the next element is smaller, then change min_position
+                        if (prices[x] < prices[min_position])
+                        {
+                            min_position = x;
+                        }
+                    } // End of inner for loop
+                    // If min_position does not equal current element evaluated
+                    // then perform the swap so that this is now the lowest element
+                    if (min_position != 1)
+                    {
+                        temp = prices[i];
+                        prices[i] = prices[min_position];
+                        prices[min_position] = temp;
+                    }
+                    Console.Write(" " + prices[i]);
+                } // End of outer for loop
+                Console.WriteLine("\n");
+                // For each element in the array
+                foreach (int p in prices)
+                {
+                    // Add each element until totPrice meets or is under budget
+                    totPrice += p;
+                    if (totPrice <= k)
+                    {
+                        // Note down the point in array where specifications are met
+                        numToys++;
+                        // Display the elements in the array that qualify
+                        Console.Write(" " + p);
+                    }
+                    else
+                    {
+                        // Go back to the last qualifying totPrice
+                        totPrice -= p;
+                        // Break the loop
+                        break;
+                    }
+                }
+
+                // Display amount of toys individual can by and their accumulated total
+                Console.WriteLine("\nYou can only buy " + numToys + " toys at most." +
+                    " Their prices are listed directly above and total is: " + totPrice);
+            }
+            catch
+            {
+                // Catch block to handle exceptions
+                Console.WriteLine("\nThe program failed to calculate. Please close and try again.");
+                Console.ReadKey(true);
+            }
             return 0;
-
         }
 
 
