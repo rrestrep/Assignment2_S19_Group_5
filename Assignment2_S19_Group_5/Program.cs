@@ -281,8 +281,88 @@ namespace Assignment2_S19_Group_5
         // Complete the dayOfProgrammer function below.
 
         static string dayOfProgrammer(int year)
-
         {
+            try
+            {
+                // Create dayOfYear, resultMonth, and ResultDay variables
+                // and initialize them with values 
+                int dayOfYear = 256;
+                int resultMonth = 0;
+                int resultDay = 0;
+
+                // Prompt the user to input the year they are traveling to
+                Console.Write("Enter the year you are traveling to: ");
+                string input8 = Console.ReadLine();
+                // Take user's input and update the Year variable 
+                year = int.Parse(input8);
+
+                // Create new array that includes the min amount of days in each month, starting at Month 0)
+                int[] daysPerMonth = new int[13] { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+                // Create conditional statements that will change # of days in Feb
+                // If the year is 1918
+                if (year == 1918)
+                {
+                    // Reduce February by 13 days 
+                    // to reflect shift from Julian to Gregorian calendar
+                    daysPerMonth[2] -= 13;
+                }
+                // Otherwise, if the year is before 1918 and divisible by 4
+                else if ((year < 1918 && year % 4 == 0) ||
+                    // OR if the year is after 1918 and is divisible by 4 but not divisible by 100
+                    (year > 1918 && ((year % 4 == 0 & year % 100 != 0) ||
+                    // OR if the year is divisible by 400 only
+                    (year % 400 == 0))))
+                {
+                    // Make those years a leap year
+                    // by adding 1 extra day to February
+                    daysPerMonth[2]++;
+                }
+
+                // For loop that wil cycle through length of each month
+                // in order to find 256th day of the year
+                for (int d = 0; d < daysPerMonth.Length; d++)
+                {
+                    // If the day of the year (256) is less or equal to
+                    // the current position of the counter
+                    if (dayOfYear <= daysPerMonth[d])
+                    {
+                        // That month is the resultMonth
+                        resultMonth = d;
+
+                        // If we are in February
+                        // and the year is 1918
+                        if (d == 2 && year == 1918)
+                        {
+                            // Add 13 days to reflect
+                            // the jump from Jan 31 to Feb 14
+                            dayOfYear += 13;
+                        }
+                        // Take the final day calculated as 
+                        // the result Day
+                        resultDay = dayOfYear;
+                        // Break out of the loop
+                        break;
+                    }
+                    else
+                    {
+                        // The day of a regular year is calculated by 
+                        // subtracting the remaining days in the month
+                        // from the position of the counter
+                        dayOfYear -= daysPerMonth[d];
+                    }
+                }
+
+                // Display the answer to the user
+                Console.WriteLine("In your year, the Day of the Programmer" +
+                    " is on " + resultDay + "." + resultMonth + "." + year + "!");
+            }
+            catch
+            {
+                // Catch block to handle exceptions
+                Console.WriteLine("\nThe program failed to calculate. Please close and try again.");
+                Console.ReadKey(true);
+            }
             return "";
         }
 
