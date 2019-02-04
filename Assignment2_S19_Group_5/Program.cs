@@ -82,7 +82,7 @@ namespace Assignment2_S19_Group_5
             findMedian(arr2);
             Console.ReadKey(true);
 
-        // EXERCISE 7: losest numbers
+        // EXERCISE 7: closest numbers
 
             Console.WriteLine("\n\nClosest numbers");
             int[] arr3 = { 5, 4, 3, 2 };
