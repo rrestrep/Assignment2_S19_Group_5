@@ -192,6 +192,46 @@ namespace Assignment2_S19_Group_5
         static string balancedSums(List<int> arr)
 
         {
+            try
+            {
+                //Instantiate variables to sum from both end of array
+                int i = 0;
+                int j = arr.Count - 1;
+                //Instantiate variable to determine if both sides of array equal
+                int sum = 0;
+                //Instantiate output vairiable
+                string isBalanced = "No";
+
+                //While loop through array and adjust sum total minus total from right end of array and add from left end of array 
+                while (i != j)
+                {
+                    if (sum >= 0)
+                    {
+                        sum -= arr[j];
+                        j--;
+                    }
+                    else
+                    {
+                        sum += arr[i];
+                        i++;
+                    }
+                }
+                //If sum equals zero, array sums can be balanced. Change output to "Yes"
+                if (sum == 0)
+                    isBalanced = "Yes";
+
+                //return output string
+                return isBalanced;
+
+            }//End try
+
+            catch
+            {
+                // Catch block to handle exceptions
+                Console.WriteLine("\nThe program balancedSums failed to calculate. Please close and try again.");
+                Console.ReadKey(true);
+            }//End catch
+
             return "";
         }
 
