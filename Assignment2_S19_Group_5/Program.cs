@@ -115,15 +115,21 @@ namespace Assignment2_S19_Group_5
             //********* EXERCISE 7: closest numbers **********
             //************************************************
             //************************************************
-            
-            Console.WriteLine("\n\nClosest numbers");
-            int[] arr3 = { 5, 4, 3, 2 };
+
+            Console.Write("Closest numbers:  ");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            int[] arr3 = { 5, 2, 3, 4, 1 };
+            Console.Write("Array:  ");
+            Console.WriteLine("[{0}]", string.Join(", ", arr3));
+
+            Console.Write("Closest numbers:  ");
             int[] r4 = closestNumbers(arr3);
-            displayArray(r4);
+            Console.WriteLine("[{0}]", string.Join(", ", r4));
             Console.ReadKey(true);
 
 
-        
+
             //************************************************
             //************************************************
             //******* EXERCISE 8: Day of programmer **********
@@ -429,7 +435,7 @@ namespace Assignment2_S19_Group_5
         }
 
 
-         //************************************************
+        //************************************************
         //************************************************
         //********* EXERCISE 7: closest numbers **********
         //************************************************
@@ -438,9 +444,25 @@ namespace Assignment2_S19_Group_5
         // Complete the closestNumbers function below.
 
         static int[] closestNumbers(int[] arr)
-
-        {       
-            return new int[] { };
+        {
+            // Complete this function
+            int difference = int.MaxValue;
+            List<int> nums = new List<int>();
+            Array.Sort(arr);
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (Math.Abs(arr[i] - arr[i - 1]) < difference)
+                {
+                    nums.Clear();
+                    difference = Math.Abs(arr[i] - arr[i - 1]);
+                }
+                if (Math.Abs(arr[i] - arr[i - 1]) == difference)
+                {
+                    nums.Add(arr[i - 1]);
+                    nums.Add(arr[i]);
+                }
+            }
+            return nums.ToArray();
         }
 
 
