@@ -86,10 +86,13 @@ namespace Assignment2_S19_Group_5
             //************************************************
             //************************************************
                     
-            Console.WriteLine("\n\nGrading students");
+            Console.Write("Student Grades:  ");
             int[] grades = { 73, 67, 38, 33 };
+            Console.WriteLine("[{0}]", string.Join(", ", grades));
             int[] r3 = gradingStudents(grades);
-            displayArray(r3);
+            Console.Write("");
+            Console.Write("Final Student Grades are:  ");
+            Console.WriteLine("[{0}]", string.Join(", ", r3));
             Console.ReadKey(true);
 
 
@@ -336,10 +339,37 @@ namespace Assignment2_S19_Group_5
         // Complete the gradingStudents function below.
 
         static int[] gradingStudents(int[] grades)
+            {
+                /*
+                 * Write your code here.
+                 */
+                List<int> list = new List<int>();
+                foreach (int g in grades)
+                {
+                    if (g < 38)
+                    {
+                        list.Add(g);
+                    }
+                    else
+                    {
+                        int rd = 5 * (int)Math.Round(g / 5.0);
+                        if (rd < g)
+                        {
+                            rd += 5;
+                        }
+                        if (rd - g < 3)
+                        {
+                            list.Add(rd);
+                        }
+                        else
+                        {
+                            list.Add(g);
+                        }
+                    }
+                }
+                return list.ToArray();
+            }
 
-        {
-            return new int[] { };
-        }
 
 
         //************************************************
