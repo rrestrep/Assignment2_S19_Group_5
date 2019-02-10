@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 // Authors: Carmelo Anthony, Rafael Restrepo, Mithra Sagar
 // Course: ISM 6225 University of South Florida
 
@@ -330,6 +331,38 @@ namespace Assignment2_S19_Group_5
         static int[] missingNumbers(int[] arr, int[] brr)
 
         {
+            try
+            {
+                //Instantiate a integer array with 100 instances
+                int[] freq = new int[100_001];
+                //Instantiate a Sorted Set to remove duplicate values and arrange in ascending order
+                var missing = new SortedSet<int>();
+                //loop through each number of the final array and add instance to index of temp array
+                foreach (int i in arr)
+                {
+                    freq[i]++;
+                }
+                //loop through each instance in original array, for every instance that equals zero in the dv=crement of temp array add to sorted set
+                foreach (int i in brr)
+                {
+                    if (freq[i]-- == 0)
+                    {
+                        missing.Add(i);
+                    }
+                }
+                //Create string of sorted set
+                string result = string.Join(" ", missing);
+                //Split and parse string into integer array
+                int[] F_result = result.Split(" ").Select(int.Parse).ToArray();
+                //Return final result
+                return F_result;
+            }//End Try
+            catch
+            {
+                // Catch block to handle exceptions
+                Console.WriteLine("\nThe program missingNumbers failed to calculate. Please close and try again.");
+                Console.ReadKey(true);
+            }
             return new int[] { };
         }
 
