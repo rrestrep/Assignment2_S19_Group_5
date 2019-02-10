@@ -386,33 +386,39 @@ namespace Assignment2_S19_Group_5
 
         static int[] gradingStudents(int[] grades)
             {
-                /*
-                 * Write your code here.
-                 */
+                // Create list 
                 List<int> list = new List<int>();
+                // Foreach loop that cycles through each value in array
                 foreach (int g in grades)
                 {
+                    // If a grade is lower than 38, add to the list
                     if (g < 38)
                     {
                         list.Add(g);
                     }
                     else
                     {
+                        // Otherwise, perform necessary rounding 
                         int rd = 5 * (int)Math.Round(g / 5.0);
                         if (rd < g)
                         {
+                            // Round to nearest 5 
                             rd += 5;
                         }
                         if (rd - g < 3)
                         {
+                            // If rounded grade minus original grade
+                            // is less than 3, then add to list
                             list.Add(rd);
                         }
                         else
                         {
+                            // Add all other grades to list
                             list.Add(g);
                         }
                     }
                 }
+                // Return list to array 
                 return list.ToArray();
             }
 
@@ -485,23 +491,30 @@ namespace Assignment2_S19_Group_5
 
         static int[] closestNumbers(int[] arr)
         {
-            // Complete this function
             int difference = int.MaxValue;
+            // Create list to keep track of values
             List<int> nums = new List<int>();
+            // Sort array
             Array.Sort(arr);
+            // For each integer in length of array
             for (int i = 1; i < arr.Length; i++)
             {
+                // If the absolute value of element is less than max value
                 if (Math.Abs(arr[i] - arr[i - 1]) < difference)
                 {
+                    // Change the difference
                     nums.Clear();
                     difference = Math.Abs(arr[i] - arr[i - 1]);
                 }
+                // If it is equal than the max value
                 if (Math.Abs(arr[i] - arr[i - 1]) == difference)
                 {
+                    // Add to array
                     nums.Add(arr[i - 1]);
                     nums.Add(arr[i]);
                 }
             }
+            // Return array 
             return nums.ToArray();
         }
 
