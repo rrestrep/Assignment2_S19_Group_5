@@ -21,16 +21,25 @@ namespace Assignment2_S19_Group_5
             // A left rotation operation on an array shifts each of the array's elements 1 unit to the left
             // Request for a user input for the number of times he wants to rotate the array left
             Console.Write("\nPlease key the number of times you want to LEFT rotate an array defined as [1 2 3 4 5]: ");
-            string input = Console.ReadLine();
-            int d = int.Parse(input);
+            try
+            {
+                string input = Console.ReadLine();
+                int d = int.Parse(input);
 
-            // Set an Static Array to test
-            int[] a = { 1, 2, 3, 4, 5 };
+                // Set an Static Array to test
+                int[] a = { 1, 2, 3, 4, 5 };
 
-            // Left Shift Array Method called
-            LeftShiftArray(a, d);
-            Console.WriteLine(String.Join(",", a));
-            Console.ReadKey(true);
+                // Left Shift Array Method called
+                LeftShiftArray(a, d);
+                Console.WriteLine(String.Join(",", a));
+                Console.ReadKey(true);
+            }
+            catch
+            {
+                // Catch block to handle exceptions
+                Console.WriteLine("\nThe program failed to calculate. Please close and try again.");
+                Console.ReadKey(true);
+            }
 
 
 
@@ -87,7 +96,7 @@ namespace Assignment2_S19_Group_5
             //************************************************
             //************************************************
                     
-            Console.Write("Student Grades:  ");
+            Console.Write("\n\nStudent Grades:  ");
             int[] grades = { 73, 67, 38, 33 };
             Console.WriteLine("[{0}]", string.Join(", ", grades));
             int[] r3 = gradingStudents(grades);
@@ -117,7 +126,7 @@ namespace Assignment2_S19_Group_5
             //************************************************
             //************************************************
 
-            Console.Write("Closest numbers:  ");
+            Console.Write("\n\nClosest numbers:  ");
             Console.WriteLine("");
             Console.WriteLine("");
             int[] arr3 = { 5, 2, 3, 4, 1 };
@@ -178,8 +187,6 @@ namespace Assignment2_S19_Group_5
             Array.Copy(buffer, 0, arr, arr.Length - shift, shift);
            
         }
-
-
 
         //************************************************
         //************************************************
